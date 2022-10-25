@@ -16,10 +16,10 @@
         }
 
         $user_role = $_SESSION['role_as'];
-        if ($user_role != "0") {
-            $userName = $row['fname'] ." ". $row['lname'];
-        }else {
+        if ($user_role === "0") {
             $userName =  $row['shopname'];
+        }else {
+            $userName = $row['fname'] ." ". $row['lname'];
         }
 
         $output .= '<a href="chat.php?user_id='. $row['unique_id'] .'">

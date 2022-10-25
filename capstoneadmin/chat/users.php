@@ -13,7 +13,7 @@
       <header>
         <div class="content">
           <?php
-            if($_SESSION['role_as'] == '1') {
+            if ($_SESSION['role_as'] === '1') {
               $query = " SELECT u.fname, u.lname, u.unique_id, shop.name as shopname FROM user u
               join tattooshops shop on shop.id=u.shopid
               WHERE unique_id= '".$_SESSION['unique_id']."' ";

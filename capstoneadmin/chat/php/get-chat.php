@@ -5,14 +5,26 @@
         $outgoing_id = $_SESSION['unique_id'];
         $incoming_id = mysqli_real_escape_string($con, $_POST['incoming_id']);
         $output = "";
-        $sql = "SELECT user.unique_id, shops.name as shopname, messages.incoming_msg_id,
+
+        if($_SESSION['role_as'] === '0') {
+            $sql = "SELECT user.unique_id, shops.name as shopname, messages.incoming_msg_id,
+                messages.outgoing_msg_id, messages.msg, messages.msg_id
+                FROM messages
+                LEFT JOIN user ON user.unique_id=messages.outgoing_msg_id
+                LEFT JOIN tattooshops as shops ON shops.id=user.shopid
+                WHERE (outgoing_msg_id='$outgoing_id' AND incoming_msg_id='$incoming_id')
+                OR (outgoing_msg_id='$incoming_id' AND incoming_msg_id='$outgoing_id')
+                ORDER BY msg_id";
+        }
+        else {
+            $sql = "SELECT user.unique_id, messages.incoming_msg_id,
             messages.outgoing_msg_id, messages.msg, messages.msg_id
             FROM messages
             LEFT JOIN user ON user.unique_id=messages.outgoing_msg_id
-            LEFT JOIN tattooshops as shops ON shops.id=user.shopid
             WHERE (outgoing_msg_id='$outgoing_id' AND incoming_msg_id='$incoming_id')
             OR (outgoing_msg_id='$incoming_id' AND incoming_msg_id='$outgoing_id')
             ORDER BY msg_id";
+        }
 
         $query = mysqli_query($con, $sql);
         if (mysqli_num_rows($query) > 0) {

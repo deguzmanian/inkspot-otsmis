@@ -83,34 +83,14 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-warehouse"></i></fa-thin></div>
                     Products /  Equipment
                 </a>
-                <a class="nav-link" style="color:white" href="../chat/users.php">
+                <a class="nav-link" target="_blank" style="color:white" href="../chat/users.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-message"></i></fa-thin></div>
                     Messages
                 </a>
                 ';
                 }
                 ?>
-                <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
-                <!-- <a class="nav-link collapsed" style="color:white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Tables
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a> -->
-                <!-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" style="color:white" href="tattooshops.php">Tattoo Shops</a>
-                        <a class="nav-link" style="color:white" href="prices.php">Prices</a>
-                        <a class="nav-link" style="color:white" href="services.php">Services</a>
-                        <a class="nav-link" style="color:white" href="works.php">Works</a>
-                        
-                    </nav>
-                </div> -->
-                
-                
-                
-                
         </div>
-
     </nav>
 </div>
 

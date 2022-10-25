@@ -1,7 +1,7 @@
 <?php 
     session_start();
     include_once "../../admin/config/dbcon.php";
-    if(isset($_SESSION['unique_id'])){
+    if (isset($_SESSION['unique_id'])){
         $outgoing_id = $_SESSION['unique_id'];
         $incoming_id = mysqli_real_escape_string($con, $_POST['incoming_id']);
         $message = mysqli_real_escape_string($con, $_POST['message']);
@@ -11,7 +11,7 @@
             VALUES ('" .$incoming_id. "', '" .$outgoing_id. "', '" .$message. "')")
             or die();
         }
-    }else{
+    } else {
         header("location: ../login.php");
     }
 ?>

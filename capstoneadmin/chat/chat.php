@@ -12,8 +12,16 @@
       <header>
         <?php 
           $user_id = mysqli_real_escape_string($con, $_GET['user_id']);
-          $msgQuery = "SELECT shop.name as shopname, user.unique_id FROM user join tattooshops shop on shop.id=user.shopid WHERE unique_id='".$user_id."'";
+          if($_SESSION['role_as'] === '0') {
+            $msgQuery = "SELECT shop.name as shopname, user.unique_id, user.fname, user.lname FROM user join tattooshops shop on shop.id=user.shopid WHERE unique_id='".$user_id."'";
+          }else {
+            $msgQuery = "SELECT unique_id, fname, lname FROM user WHERE unique_id='".$user_id."'";
+          }
           $sql = mysqli_query($con, $msgQuery);
+
+          // var_dump($msgQuery);
+          // die();
+
           if (mysqli_num_rows($sql) > 0) {
             $row = mysqli_fetch_assoc($sql);
           } else {
@@ -22,7 +30,7 @@
         ?>
         <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
         <div class="details">
-          <span><?php echo $row['shopname']?></span>
+          <span><?php echo  $_SESSION['role_as'] === '0' ? $row['shopname'] : $row['fname'] ." ". $row['lname'] ?></span>
         </div>
       </header>
       <div class="chat-box">

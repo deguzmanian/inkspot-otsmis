@@ -4,7 +4,11 @@
     $outgoing_id = $_SESSION['unique_id'];
     $user_role = $_SESSION['role_as'];
 
-    $user_role === '1' ? $sql = " SELECT unique_id, fname, lname FROM user WHERE role_as=0" : $sql = " SELECT u.unique_id, u.fname, u.lname, shops.name as shopname FROM user u join tattooshops shops on shops.id=u.shopid WHERE u.role_as=1";
+    if ($user_role === '1') {
+        $sql = " SELECT unique_id, fname, lname FROM user WHERE role_as=0";
+    } else {
+        $sql = " SELECT u.unique_id, u.fname, u.lname, shops.name as shopname FROM user u join tattooshops shops on shops.id=u.shopid WHERE u.role_as=1";
+    }
 
     $query = mysqli_query($con, $sql);
     $output = "";
