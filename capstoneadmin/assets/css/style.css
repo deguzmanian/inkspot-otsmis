@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Poppins&family=Roboto:wght@300&display=swap');
+.sidenav a{
+	text-decoration: none;
+}
+
+#myFooter {
+	background-color: #826F66;
+}
+.nav-wrapper > a {
+	text-decoration: none;
+	font-family: 'Poppins', sans-serif;
+	font-size: 30px;
+	
+	
+}
+.nav-wrapper 
+{
+	background: #826F66;
+	font-family: 'Poppins', sans-serif;
+}
+
+
+.hvr-grow {
+    text-decoration: none;
+}
+.centered {
+	position: absolute;
+	top: 70%;
+	left: 50%;
+	padding-bottom: 40%;
+	transform: translate(-50%, -50%);
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+	text-decoration: none;
+	color: white;
+}
+.slides ul li
+{
+	height: 500px;
+}
+
+.slider .indicators .indicator-item.active{
+	background-color: #826F66 !important;
+}
+
+@media(max-width : 600px) {
+
+	.nav-wrapper > a:hover {
+		color: black;
+	}
+	
+}
+
+@media(min-width : 600px) {
+	.nav-wrapper > a {
+		padding-left: 35px;
+	}
+	
+}
