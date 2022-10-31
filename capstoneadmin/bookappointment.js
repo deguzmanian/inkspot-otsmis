@@ -3,6 +3,7 @@ $(document).ready(() => {
     GetSchedules();
     Cal();
 });
+
 let selected = false;
 let shopi = $('#in-fullname').attr('data-shopid');
 const userid = $('#in-fullname').attr('data-userid');
@@ -60,6 +61,11 @@ const Cal = () => {
         }
     });
 }
+
+function isDateBeforeToday(date) {
+    return new Date(date) < new Date(new Date().toDateString());
+}
+
 const CalendarData = (m, y) => {
     $('.cal-date-container').removeClass('cal-date-container-selected');
     if (m === undefined)
@@ -95,7 +101,23 @@ const CalendarData = (m, y) => {
             const dd = parseInt(d) < 10 ? `0${d}` : d;
 
             $(idd).attr('data-date',`${y}-${mm}-${dd}`);
+            $(idd).attr('data-id',`${y}${mm}${dd}`);
             $(idd).css('visibility', 'visible');
+
+            var calDate = `${y}-${mm}-${dd}`;
+            var dataID= `${y}${mm}${dd}`;
+
+            var today = new Date();
+            var day = String(today.getDate()).padStart(2, '0');
+            var mo = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mo + '-' + day;
+            if(isDateBeforeToday(calDate)){
+                $(`[data-id="${dataID}"]`).addClass('cal-date-disabled');
+            }else {
+                $(`[data-id="${dataID}"]`).removeClass('cal-date-disabled');
+            }
 
             if(dayNum === 7){
                 calRow++;
@@ -127,8 +149,8 @@ const CalendarData = (m, y) => {
 }
 
 $('.date-opt').change(() => {
-    let m = document.getElementById('sel-month').value;
-    let y = document.getElementById('sel-year').value;
+    m = document.getElementById('sel-month').value;
+    y = document.getElementById('sel-year').value;
     CalendarData(m, y);
 });
 

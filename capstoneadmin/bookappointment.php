@@ -138,7 +138,7 @@ include('includes/navbar.php');
             border-color: transparent;
         }
 
-        button:disabled {
+        button:disabled, .cal-date-disabled  {
             background-color: #e2e2e2 !important;
             color: grey !important;
         }
@@ -353,7 +353,7 @@ include('includes/navbar.php');
                             }
                         }
 
-                        $html .= '<div onclick="'.$ev.'" id="cal-daywk-' . $cal_row . '-' . $dayNum . '" data-daynum="' . $dayNum . '" data-date="" class="cal-date-container" style="visibility: hidden;">
+                        $html .= '<div onclick="'.$ev.'" id="cal-daywk-' . $cal_row . '-' . $dayNum . '" data-daynum="' . $dayNum . '" data-date="" class="cal-date-container" data-id="" style="visibility: hidden;">
                             <div class="cal-details" ' . ($dayNum == 1 ? "style='color:red'" : "") . '>
                                 <span class="day-num"></span>
                                 <span class="day-name">' . $dayName[$cal_day] . '</span>
